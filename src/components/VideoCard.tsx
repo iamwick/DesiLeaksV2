@@ -49,7 +49,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ video, className = '' }) => {
       <div className="mt-3">
         <Link to={`/video/${video.id}`} className="block">
           <h3 className="text-white font-medium line-clamp-2 group-hover:text-adult-primary transition-colors">
-            {video.title}``
+            {video.title}
           </h3>
         </Link>
         

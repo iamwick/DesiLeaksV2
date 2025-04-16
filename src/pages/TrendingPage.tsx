@@ -8,7 +8,6 @@ import { useTrendingVideos } from '@/hooks/useVideos';
 import { Video } from '@/types/video';
 
 
-const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 const TrendingPage: React.FC = () => {
   
