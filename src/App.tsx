@@ -22,7 +22,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path="/video/:id" element={<VideoPage />} />
+          <Route path="/video/:title/:id" element={<VideoPage />} />
           <Route path="/trending" element={<TrendingPage />} />
           {/* <Route path="/category/:id" element={<CategoryPage />} /> */}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

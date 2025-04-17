@@ -19,10 +19,19 @@ const formatViews = (count: number): string => {
   return count.toString();
 };
 
+function formatTitleForSEO(title) {
+  // Replace spaces with hyphens, convert to lowercase, and remove non-alphanumeric characters
+  return title
+    .toLowerCase()                    // Convert to lowercase
+    .replace(/\s+/g, '-')              // Replace spaces with hyphens
+    .replace(/[^a-z0-9\-]/g, '');      // Remove any non-alphanumeric characters except hyphens
+}
+
 const VideoCard: React.FC<VideoCardProps> = ({ video, className = '' }) => {
+  const formattedTitle = formatTitleForSEO(video.title);
   return (
     <div className={`group overflow-hidden rounded-lg transition-all duration-300 ${className}`}>
-      <Link to={`/video/${video.id}`} className="block relative aspect-video overflow-hidden rounded-lg">
+      <Link to={`/video/${formattedTitle}/${video.id}`} className="block relative aspect-video overflow-hidden rounded-lg">
         {/* Thumbnail */}
         <img
           src={video.thumbnail}
