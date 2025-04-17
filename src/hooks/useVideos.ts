@@ -226,7 +226,7 @@ const fetchVideos = async (page: number = 1, id?: string): Promise<VideosRespons
 //   });
 // }
 
-const fetchTrendingVideos = async (page: number = 1, id?: string): Promise<VideosResponse> => {
+const fetchTrendingVideos = async (): Promise<VideosResponse> => {
   // Try to fetch from the API first
   try {
     let response; {
@@ -266,15 +266,23 @@ const fetchTrendingVideos = async (page: number = 1, id?: string): Promise<Video
     };
   }
 };
-export function useTrendingVideos(page: number = 1, id?: string) {
+// export function useTrendingVideos(page: number = 1, id?: string) {
+//   return useQuery({
+//     queryKey: id ? ["video", id] : ["videos", page], // Use "video" key for specific video, "videos" for paginated
+//     queryFn:() => (id ? fetchTrendingVideos(undefined, id) : fetchTrendingVideos(page)), // Fetch trending videos
+//     placeholderData: (previousData) => previousData,
+//     staleTime: 5 * 60 * 1000, // 5 minutes
+//     });
+// }
+
+export function useTrendingVideos() {
   return useQuery({
-    queryKey: id ? ["video", id] : ["videos", page], // Use "video" key for specific video, "videos" for paginated
-    queryFn:() => (id ? fetchTrendingVideos(undefined, id) : fetchTrendingVideos(page)), // Fetch trending videos
+    queryKey: ["trendingVideos"],
+    queryFn: fetchTrendingVideos,
     placeholderData: (previousData) => previousData,
     staleTime: 5 * 60 * 1000, // 5 minutes
-    });
+  });
 }
-
 export function useVideos(page: number = 1, id?: string) {
   return useQuery({
     queryKey: id ? ["video", id] : ["videos", page], // Use "video" key for specific video, "videos" for paginated

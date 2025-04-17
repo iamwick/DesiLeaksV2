@@ -12,7 +12,7 @@ import { Video } from '@/types/video';
 const TrendingPage: React.FC = () => {
   
     const [page, setPage] = useState(1);
-    const { data, isLoading, isError } = useTrendingVideos(page);
+    const { data, isLoading, isError } = useTrendingVideos();
   
     const loadMore = () => {
       setPage((prev) => prev + 1);
